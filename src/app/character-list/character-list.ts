@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { HarryPotterCharacter } from '../models/harry-potter-character.model';
 import { HarryPotterApi } from '../network/harry-potter-api';
 import { catchError, finalize, of } from 'rxjs';
@@ -10,16 +10,25 @@ import {
   MatCardTitle,
 } from '@angular/material/card';
 import { NgOptimizedImage } from '@angular/common';
+import { HouseFormatPipe } from '../house-format-pipe';
 
 @Component({
   selector: 'app-character-list',
-  imports: [MatCardImage, MatCardSubtitle, MatCardTitle, MatCardHeader, MatCard, NgOptimizedImage],
+  imports: [
+    MatCardImage,
+    MatCardSubtitle,
+    MatCardTitle,
+    MatCardHeader,
+    MatCard,
+    NgOptimizedImage,
+    HouseFormatPipe,
+  ],
   templateUrl: './character-list.html',
   styleUrl: './character-list.css',
 })
 export class CharacterList {
   private readonly api = inject(HarryPotterApi);
-  characterList: HarryPotterCharacter[] = [];
+  characterList = signal<HarryPotterCharacter[]>([]);
   isLoading = false;
 
   ngOnInit(): void {
@@ -38,7 +47,7 @@ export class CharacterList {
         finalize(() => (this.isLoading = false)),
       )
       .subscribe((characters) => {
-        this.characterList = characters;
+        this.characterList.set(characters);
         console.log(this.characterList);
       });
   }

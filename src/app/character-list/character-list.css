@@ -1,5 +1,7 @@
 .character-card {
   min-width: 300px;
+  background-color: black;
+  color: white;
 }
 
 .card-container {
