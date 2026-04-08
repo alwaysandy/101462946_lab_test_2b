@@ -48,9 +48,7 @@ export class CharacterDetails {
         }),
       )
       .subscribe((details) => {
-        console.log(this.id);
         this.details.set(details);
-        console.log(this.details());
       });
   }
 }

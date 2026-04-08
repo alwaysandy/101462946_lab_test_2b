@@ -12,6 +12,8 @@ import {
 import { NgOptimizedImage } from '@angular/common';
 import { HouseFormatPipe } from '../house-format-pipe';
 import { RouterLink } from '@angular/router';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { A } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-character-list',
@@ -24,6 +26,7 @@ import { RouterLink } from '@angular/router';
     NgOptimizedImage,
     HouseFormatPipe,
     RouterLink,
+    ReactiveFormsModule,
   ],
   templateUrl: './character-list.html',
   styleUrl: './character-list.css',
@@ -32,8 +35,20 @@ export class CharacterList {
   private readonly api = inject(HarryPotterApi);
   characterList = signal<HarryPotterCharacter[]>([]);
 
+  houseForm = new FormGroup({
+    selectedHouse: new FormControl(null),
+  });
+  options = ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff'];
+
   ngOnInit(): void {
     this.loadCharacters();
+    this.houseForm.controls.selectedHouse.valueChanges.subscribe((val) => {
+      if (val === null) {
+        this.loadCharacters();
+      } else {
+        this.loadCharactersByHouse(val);
+      }
+    });
   }
 
   loadCharacters(): void {
@@ -47,7 +62,20 @@ export class CharacterList {
       )
       .subscribe((characters) => {
         this.characterList.set(characters);
-        console.log(this.characterList);
+      });
+  }
+
+  loadCharactersByHouse(house: string): void {
+    this.api
+      .getCharactersByHouse(house)
+      .pipe(
+        catchError((e) => {
+          console.error(e);
+          return of([] as HarryPotterCharacter[]);
+        }),
+      )
+      .subscribe((characters) => {
+        this.characterList.set(characters);
       });
   }
 }

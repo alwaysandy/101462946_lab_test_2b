@@ -41,12 +41,13 @@ mat-card-title {
   display: flex;
   align-items: center;
   height: 4rem;
+  justify-content: space-between;
+  padding: 0 1rem 0 1rem;
 }
 
 .nav-title {
   color: white;
   font-size: 3rem;
-  padding-left: 1rem;
 }
 
 a {

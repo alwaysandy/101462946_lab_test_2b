@@ -20,4 +20,10 @@ export class HarryPotterApi {
       `https://hp-api.onrender.com/api/character/${id}`,
     );
   }
+
+  public getCharactersByHouse(house: string): Observable<HarryPotterCharacter[]> {
+    return this.httpClient.get<HarryPotterCharacter[]>(
+      `https://hp-api.onrender.com/api/characters/house/${house.toLowerCase()}`,
+    );
+  }
 }

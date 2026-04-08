@@ -1,5 +1,13 @@
 <nav class="nav-bar">
   <span class="nav-title">Lab Test 2 - List</span>
+  <form [formGroup]="houseForm">
+    <select formControlName="selectedHouse">
+      <option [ngValue]="null">Filter by house</option>
+      @for (house of options; track house) {
+        <option [ngValue]="house">{{ house }}</option>
+      }
+    </select>
+  </form>
 </nav>
 
 <div class="card-container">
