@@ -1,59 +1,40 @@
-# 101462946LabTest2b
+# **101462946 Lab Test 2b**
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.2.
+This is an Angular app that fetches all Harry Potter characters, and shows a picture of them and some of the character details in a grid. Users can filter by house, or click on the character to see further details about the.
 
-## Development server
+---
 
-To start a local development server, run:
+## **Features implemented**
 
-```bash
-ng serve
-```
+* Fetch all character information via **HTTPClient Service**
+* Display all characters in a grid with basic styling
+* Allow clicking character to see details using **get character by id** endpoint
+* Allow filtering by house from dropdown using **get character by house** endpoint
+* Use **Angular Pipe** to change color of house
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## **How to run**
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. Clone this app:
 
-```bash
-ng generate component component-name
-```
+   ```bash
+   git clone https://github.com/alwaysandy/101462946_lab_test_2b.git
+   ```
+2. Change directory:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+   ```bash
+   cd 101462946_lab_test_2b
+   ```
+3. Install dependencies:
 
-```bash
-ng generate --help
-```
+   ```bash
+   npm install
+   ```
+4. Run the development server:
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+   ```bash
+   ng serve --open
+   ```
+5. The app will automatically open in your browser at:
+   http://localhost:4200
