@@ -14,6 +14,8 @@ import { HouseFormatPipe } from '../house-format-pipe';
 import { RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { A } from '@angular/cdk/keycodes';
+import { MatFormField, MatLabel } from '@angular/material/input';
+import { MatOption, MatSelect } from '@angular/material/select';
 
 @Component({
   selector: 'app-character-list',
@@ -27,6 +29,10 @@ import { A } from '@angular/cdk/keycodes';
     HouseFormatPipe,
     RouterLink,
     ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatSelect,
+    MatOption,
   ],
   templateUrl: './character-list.html',
   styleUrl: './character-list.css',

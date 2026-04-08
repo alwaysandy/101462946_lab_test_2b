@@ -1,12 +1,16 @@
 <nav class="nav-bar">
   <span class="nav-title">Lab Test 2 - List</span>
   <form [formGroup]="houseForm">
-    <select formControlName="selectedHouse">
-      <option [ngValue]="null">Filter by house</option>
-      @for (house of options; track house) {
-        <option [ngValue]="house">{{ house }}</option>
-      }
-    </select>
+    <mat-form-field appearance="fill" subscriptSizing="dynamic">
+      <mat-label>Filter by house</mat-label>
+      <mat-select formControlName="selectedHouse">
+        <mat-option [value]="null">Filter By House</mat-option>
+
+        @for (house of options; track house) {
+          <mat-option [value]="house">{{ house }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
   </form>
 </nav>
 
