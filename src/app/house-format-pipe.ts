@@ -15,7 +15,7 @@ export class HouseFormatPipe implements PipeTransform {
       case 'Hufflepuff':
         return 'yellow';
       default:
-        return 'white';
+        return '#f5f5f5';
     }
   }
 }
