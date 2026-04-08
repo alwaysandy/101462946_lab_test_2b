@@ -11,6 +11,7 @@ import {
 } from '@angular/material/card';
 import { NgOptimizedImage } from '@angular/common';
 import { HouseFormatPipe } from '../house-format-pipe';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-character-list',
@@ -22,6 +23,7 @@ import { HouseFormatPipe } from '../house-format-pipe';
     MatCard,
     NgOptimizedImage,
     HouseFormatPipe,
+    RouterLink,
   ],
   templateUrl: './character-list.html',
   styleUrl: './character-list.css',
@@ -29,14 +31,12 @@ import { HouseFormatPipe } from '../house-format-pipe';
 export class CharacterList {
   private readonly api = inject(HarryPotterApi);
   characterList = signal<HarryPotterCharacter[]>([]);
-  isLoading = false;
 
   ngOnInit(): void {
     this.loadCharacters();
   }
 
   loadCharacters(): void {
-    this.isLoading = true;
     this.api
       .getCharacters()
       .pipe(
@@ -44,7 +44,6 @@ export class CharacterList {
           console.error(e);
           return of([] as HarryPotterCharacter[]);
         }),
-        finalize(() => (this.isLoading = false)),
       )
       .subscribe((characters) => {
         this.characterList.set(characters);

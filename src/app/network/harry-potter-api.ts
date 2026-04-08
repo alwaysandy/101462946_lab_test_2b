@@ -15,8 +15,8 @@ export class HarryPotterApi {
     );
   }
 
-  public getCharactersById(id: number): Observable<HarryPotterCharacter> {
-    return this.httpClient.get<HarryPotterCharacter>(
+  public getCharacterById(id: string): Observable<HarryPotterCharacter[]> {
+    return this.httpClient.get<HarryPotterCharacter[]>(
       `https://hp-api.onrender.com/api/character/${id}`,
     );
   }

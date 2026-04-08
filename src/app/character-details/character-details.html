@@ -1,0 +1,42 @@
+<nav class="nav-bar">
+  <span class="nav-title">Lab Test 2 - Details</span>
+</nav>
+
+<div class="detail-container">
+  <mat-card class="character-detail-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>{{ details().name }}</mat-card-title>
+      <mat-card-subtitle [style.color]="details().house | houseFormat">
+        {{ details().house }}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <img
+      mat-card-image
+      [ngSrc]="
+        details().image ||
+        'https://upload.wikimedia.org/wikipedia/en/thumb/b/b1/Portrait_placeholder.png/330px-Portrait_placeholder.png'
+      "
+      width="300"
+      height="400"
+      alt="Photo of {{ details().name }}"
+    />
+
+    <mat-card-content>
+      <p><strong>Actor:</strong> {{ details().actor || 'Unknown' }}</p>
+      <p><strong>Species:</strong> {{ details().species }}</p>
+      <p><strong>Ancestry:</strong> {{ details().ancestry }}</p>
+      <p><strong>Wizard:</strong> {{ details().wizard ? 'Yes' : 'No' }}</p>
+
+      @if (details().wand) {
+        <p>
+          <strong>Wand:</strong>
+          {{ details().wand.wood || 'Unknown' }} wood, {{ details().wand.core || 'Unknown' }} core
+          @if (details().wand.length) {
+            ({{ details().wand.length }}")
+          }
+        </p>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

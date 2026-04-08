@@ -1,20 +1,26 @@
+<nav class="nav-bar">
+  <span class="nav-title">Lab Test 2 - List</span>
+</nav>
+
 <div class="card-container">
   @for (c of characterList(); track c.id) {
-    <mat-card class="character-card" appearance="outlined">
-      <mat-card-header>
-        <mat-card-title>{{ c.name }}</mat-card-title>
-        <mat-card-subtitle [style.color]="c.house | houseFormat">{{ c.house }}</mat-card-subtitle>
-      </mat-card-header>
-      <img
-        mat-card-image
-        [ngSrc]="
-          c.image ||
-          'https://upload.wikimedia.org/wikipedia/en/thumb/b/b1/Portrait_placeholder.png/330px-Portrait_placeholder.png'
-        "
-        width="300"
-        height="400"
-        alt="Photo of Harry Potter character {{ c.name }}"
-      />
-    </mat-card>
+    <a [routerLink]="['/details', c.id]">
+      <mat-card class="character-card" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>{{ c.name }}</mat-card-title>
+          <mat-card-subtitle [style.color]="c.house | houseFormat">{{ c.house }}</mat-card-subtitle>
+        </mat-card-header>
+        <img
+          mat-card-image
+          [ngSrc]="
+            c.image ||
+            'https://upload.wikimedia.org/wikipedia/en/thumb/b/b1/Portrait_placeholder.png/330px-Portrait_placeholder.png'
+          "
+          width="300"
+          height="400"
+          alt="Photo of Harry Potter character {{ c.name }}"
+        />
+      </mat-card>
+    </a>
   }
 </div>
