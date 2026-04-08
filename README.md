@@ -38,3 +38,26 @@ This is an Angular app that fetches all Harry Potter characters, and shows a pic
    ```
 5. The app will automatically open in your browser at:
    http://localhost:4200
+
+---
+
+## **Screenshots**
+
+### App Running
+![App Running](screenshots/running.png)
+
+### Api Service / Code
+![API Code Screenshot 1](screenshots/api:code1.png)
+![API Code Screenshot 2](screenshots/api:code3.png)
+![API Code Screenshot 3](screenshots/api:code3.png)
+
+### App Running
+
+#### Character List
+![Details](screenshots/list.png)
+
+#### Filtering Characters By House
+![Filter By House](screenshots/filter.png)
+
+#### Character Details
+![Character Details](screenshots/details.png)
